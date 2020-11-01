@@ -4,10 +4,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Enumeration;
-
-
-
+import java.util.List;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.Driver;
@@ -33,15 +33,16 @@ public class DBDemo {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 	private static void listDrivers() {
-		Enumeration<Driver>driverList = DriverManager.getDrivers();
-		while(driverList.hasMoreElements())
-		{
-			Driver driverClass = (Driver)driverList.nextElement();
-			System.out.println(" "+driverClass.getClass().getName());
+		Enumeration<Driver> driverList = DriverManager.getDrivers();
+		while (driverList.hasMoreElements()) {
+			Driver driverClass = (Driver) driverList.nextElement();
+			System.out.println(" " + driverClass.getClass().getName());
 		}
 		
 	}
+	
 }
