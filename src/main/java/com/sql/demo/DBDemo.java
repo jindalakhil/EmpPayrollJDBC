@@ -34,11 +34,6 @@ public class DBDemo {
 			e.printStackTrace();
 		}
 		
-		List<EmployeePayrollData> empList = new ArrayList();
-		empList = readData();
-		for (EmployeePayrollData i : empList) {
-			System.out.println(i);
-		}
 	}
 
 	private static void listDrivers() {
@@ -50,25 +45,4 @@ public class DBDemo {
 		
 	}
 	
-	public static List<EmployeePayrollData> readData() {
-		String sql = "SELECT * FROM employee_payroll;";
-		List<EmployeePayrollData> employeePayrollList = new ArrayList();
-		try {
-			Connection connection = DriverManager.getConnection(jdbcURL, userName, password);
-			Statement statement = connection.createStatement();
-			ResultSet result = statement.executeQuery(sql);
-			while (result.next()) {
-				int id = result.getInt("id");
-				String name = result.getString("name");
-				double basic_pay = result.getDouble("basic_pay");
-				LocalDate startDate = result.getDate("start").toLocalDate();
-				employeePayrollList.add(new EmployeePayrollData(id, name, basic_pay, startDate));
-			}
-			connection.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return employeePayrollList;
-
-	}
 }
