@@ -111,5 +111,12 @@ public class EmployeePayrollService {
 		}
 		return null;
 	}
+	
+	public Map<String, Double> readAverageSalaryByGender(IOService dbIo) {
+		if (dbIo.equals(IOService.DB_IO)) {
+			return employeePayrollDBService.getAverageSalaryByGender();
+		}
+		return null;
+	}
 
 }
